@@ -2,9 +2,6 @@ FROM golang:1.7.5
 ENV GO15VENDOREXPERIMENT 1
 RUN apt-get update && apt-get install -y libpcap-dev python-requests time file
 RUN go get github.com/golang/lint/golint github.com/fzipp/gocyclo github.com/client9/misspell/cmd/misspell
-RUN go clean -i net && go install -tags netgo std
-RUN go get github.com/weaveworks/weave
-RUN go install -race -tags netgo std
 RUN go get "github.com/Sirupsen/logrus"                
 RUN go get "github.com/andybalholm/go-bit"             
 RUN go get "github.com/aws/aws-sdk-go/aws"             
@@ -28,3 +25,5 @@ RUN go get "github.com/weaveworks/go-checkpoint"
 RUN go get "github.com/weaveworks/go-odp/odp"          
 RUN go get "github.com/weaveworks/mesh"                
 RUN go get "golang.org/x/crypto/nacl/secretbox"        
+RUN go clean -i net && go install -tags netgo std
+RUN go install -race -tags netgo std
