@@ -5,6 +5,26 @@ RUN go get github.com/golang/lint/golint github.com/fzipp/gocyclo github.com/cli
 RUN go clean -i net && go install -tags netgo std
 RUN go get github.com/weaveworks/weave
 RUN go install -race -tags netgo std
-COPY build/build.sh /
-RUN chmod +x /build.sh
-ENTRYPOINT ["sh", "/build.sh"]
+RUN go get "github.com/Sirupsen/logrus"                
+RUN go get "github.com/andybalholm/go-bit"             
+RUN go get "github.com/aws/aws-sdk-go/aws"             
+RUN go get "github.com/aws/aws-sdk-go/aws/ec2metadata" 
+RUN go get "github.com/aws/aws-sdk-go/aws/session"     
+RUN go get "github.com/aws/aws-sdk-go/service/ec2"     
+RUN go get "github.com/boltdb/bolt"                    
+RUN go get "github.com/coreos/go-iptables/iptables"    
+RUN go get "github.com/docker/docker/pkg/mflag"        
+RUN go get "github.com/fsouza/go-dockerclient"         
+RUN go get "github.com/google/gopacket"                
+RUN go get "github.com/google/gopacket/layers"         
+RUN go get "github.com/google/gopacket/pcap"           
+RUN go get "github.com/gorilla/mux"                    
+RUN go get "github.com/j-keck/arping"                  
+RUN go get "github.com/miekg/dns"                      
+RUN go get "github.com/pkg/profile"                    
+RUN go get "github.com/vishvananda/netlink"            
+RUN go get "github.com/vishvananda/netns"              
+RUN go get "github.com/weaveworks/go-checkpoint"       
+RUN go get "github.com/weaveworks/go-odp/odp"          
+RUN go get "github.com/weaveworks/mesh"                
+RUN go get "golang.org/x/crypto/nacl/secretbox"        
